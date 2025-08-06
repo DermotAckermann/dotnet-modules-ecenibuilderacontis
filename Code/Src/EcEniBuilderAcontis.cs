@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,8 @@ public class EcEniBuilderAcontis
     //*** Class data
 
     #region Fields & Properties
-    string _pathBuilderConfigXml;
-    string _pathBuilderExe;
+    string? _pathBuilderConfigXml;
+    string? _pathBuilderExe;
 
     #endregion
 
@@ -33,12 +34,22 @@ public class EcEniBuilderAcontis
     {
         string xml = CreateEniBuilderXml(slaves);
 
-        string eni = null;
+        string eni;
 
-        // execute eni builder
-        // analyse standard output and generate exception in case of error
 
-        //load created eni data
+        var psi = new ProcessStartInfo
+        {
+            FileName = _pathBuilderExe,
+            Arguments = pathBuilderConfigXml,
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
+
+        using (var p = Process.Start(psi))
+            p!.WaitForExit();
+
+        var pathEni = _pathBuilderExe?.Replace("EniBuilder.exe", "").Trim() + "EniBuilderConfig_eni.xml";
+        eni = File.ReadAllText(pathEni);
 
         return eni;
     }
@@ -63,7 +74,7 @@ public class EcEniBuilderAcontis
             var name = slaveNames[i];
 
             ushort prevPhysAddr = 0;             
-            uint prevSlaveId = busInfo.PortSlaveIds[0]; // Get the connected to slave ID
+            uint prevSlaveId = busInfo.PortSlaveIds![0]; // Get the connected to slave ID
 
             // Find the slave in the list with matching SlaveId
             var prevSlave = busSlaveList.FirstOrDefault(s => s.SlaveId == prevSlaveId);
