@@ -12,4 +12,10 @@
 
   <Import Project="..\Src\AA.Modules.EcEniBuilderAcontis.Src.projitems" Label="Shared" />
 
+  <ItemGroup>
+    <Reference Include="EcMasterAcontis">
+      <HintPath>..\Externals\EcMasterAcontis.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

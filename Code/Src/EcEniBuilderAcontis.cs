@@ -5,30 +5,110 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AA.Modules.EcMasterAcontis;
 
 
 namespace AA.Modules.EcEniBuilderAcontisModule;
 
-public static class EcEniBuilderAcontis
+public class EcEniBuilderAcontis
 {
+    //*** Class data
 
-    public static string CreateEniBuilderXml(List<SlaveDeviceInfo> slaves)
+    #region Fields & Properties
+    string _pathBuilderConfigXml;
+    string _pathBuilderExe;
+
+    #endregion
+
+    //*** Constructors
+
+    public EcEniBuilderAcontis(string pathBuilderExe)
+    {
+        _pathBuilderExe = pathBuilderExe;
+    }
+
+    //*** Methods public
+
+    public string CreateEni(List<SlaveDeviceInfo> slaves, string pathBuilderConfigXml)
+    {
+        string xml = CreateEniBuilderXml(slaves);
+
+        string eni = null;
+
+        // execute eni builder
+        // analyse standard output and generate exception in case of error
+
+        //load created eni data
+
+        return eni;
+    }
+
+    public static Port MapPort(int portIndex) =>
+    portIndex switch
+    {
+        0 => Port.A,
+        1 => Port.B,
+        2 => Port.C,
+        3 => Port.D,
+        _ => Port.None // includes 4 and beyond
+    };
+
+    public static List<SlaveDeviceInfo>  ConvertBusSlafeInfoToSlavesList(List<EcBusSlaveInfo> busSlaveList, List<string> slaveNames)
+    {
+        var result = new List<SlaveDeviceInfo>();
+
+        for (int i = 0; i < busSlaveList.Count; i++)
+        {
+            var busInfo = busSlaveList[i];
+            var name = slaveNames[i];
+
+            ushort prevPhysAddr = 0;             
+            uint prevSlaveId = busInfo.PortSlaveIds[0]; // Get the connected to slave ID
+
+            // Find the slave in the list with matching SlaveId
+            var prevSlave = busSlaveList.FirstOrDefault(s => s.SlaveId == prevSlaveId);
+            if (prevSlave != null)
+            {
+                prevPhysAddr = prevSlave.StationAddress;
+            }
+
+            var slaveDevice = new SlaveDeviceInfo
+            {
+                
+                Name = name,
+                VendorId = busInfo.VendorId,
+                ProductCode = busInfo.ProductCode,
+                RevisionNo = busInfo.RevisionNumber,
+                PrevPort = MapPort(busInfo.PrevPort),
+                PrevPhysAddr = prevPhysAddr
+
+            };
+
+            result.Add(slaveDevice);
+        }
+
+        return result;
+    }
+
+    //*** Methods private
+
+    private static string CreateEniBuilderXml(List<SlaveDeviceInfo> slaves)
     {
         const string eniTemplate =
     @"<?xml version=""1.0"" encoding=""utf-8""?>
-<Config>
-  <Info>
-    <EniFileName>EniBuilderConfig_eni.xml</EniFileName>
-    <FileFormatVersion>1.1</FileFormatVersion>
-  </Info>
-  <Master Name=""Class-A Master"">
-    <CycleTime>1000</CycleTime>
-    <Dc Mode=""BusShift"" SyncWindowMonitoring=""0"" SystemTime64Bit=""0"" />
-  </Master>
-  <Slaves>
-{0}
-  </Slaves>
-</Config>";
+    <Config>
+        <Info>
+        <EniFileName>EniBuilderConfig_eni.xml</EniFileName>
+        <FileFormatVersion>1.1</FileFormatVersion>
+        </Info>
+        <Master Name=""Class-A Master"">
+        <CycleTime>1000</CycleTime>
+        <Dc Mode=""BusShift"" SyncWindowMonitoring=""0"" SystemTime64Bit=""0"" />
+        </Master>
+        <Slaves>
+    {0}
+        </Slaves>
+    </Config>";
 
         var sb = new StringBuilder();
 
@@ -59,13 +139,4 @@ public static class EcEniBuilderAcontis
         return string.Format(CultureInfo.InvariantCulture, eniTemplate, sb.ToString());
     }
 
-    public static Port MapPort(int portIndex) =>
-    portIndex switch
-    {
-        0 => Port.A,
-        1 => Port.B,
-        2 => Port.C,
-        3 => Port.D,
-        _ => Port.None // includes 4 and beyond
-    };
 }
