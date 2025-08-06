@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>debe8568-00d1-4a1d-8ed3-7d8fc2ab04a1</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>AA.Modules.EcEniBuilderAcontis.Src</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)EcEniBuilderAcontis.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Port.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\SlaveDeviceInfo.cs" />
+  </ItemGroup>
+</Project>

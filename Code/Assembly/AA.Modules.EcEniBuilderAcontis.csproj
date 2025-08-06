@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- rename DLL & deps.json -->
+    <AssemblyName>EcEniBuilderAcontis</AssemblyName>
+    <!-- Keeps namespace intact -->
+    <RootNamespace>AA.Modules.EcEniBuilderAcontis</RootNamespace>
+  </PropertyGroup>
+
+  <Import Project="..\Src\AA.Modules.EcEniBuilderAcontis.Src.projitems" Label="Shared" />
+
+</Project>

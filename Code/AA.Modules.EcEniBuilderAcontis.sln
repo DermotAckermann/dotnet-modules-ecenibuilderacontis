@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AA.Modules.EcEniBuilderAcontis.Src", "Src\AA.Modules.EcEniBuilderAcontis.Src.shproj", "{DEBE8568-00D1-4A1D-8ED3-7D8FC2AB04A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.Modules.EcEniBuilderAcontis", "Assembly\AA.Modules.EcEniBuilderAcontis.csproj", "{B4130833-3FE3-40D1-BF08-E0726AB82581}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.Modules.EcEniBuilderAcontis.Tests", "Tests\AA.Modules.EcEniBuilderAcontis.Tests.csproj", "{1AB23791-BEAB-4653-A0CA-A90BE48B1F70}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.Modules.EcEniBuilderAcontis.xUnit", "xUnit\AA.Modules.EcEniBuilderAcontis.xUnit.csproj", "{EA293852-4C14-46ED-A3CE-257F9A863FC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4130833-3FE3-40D1-BF08-E0726AB82581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4130833-3FE3-40D1-BF08-E0726AB82581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4130833-3FE3-40D1-BF08-E0726AB82581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4130833-3FE3-40D1-BF08-E0726AB82581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AB23791-BEAB-4653-A0CA-A90BE48B1F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AB23791-BEAB-4653-A0CA-A90BE48B1F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AB23791-BEAB-4653-A0CA-A90BE48B1F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AB23791-BEAB-4653-A0CA-A90BE48B1F70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA293852-4C14-46ED-A3CE-257F9A863FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA293852-4C14-46ED-A3CE-257F9A863FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA293852-4C14-46ED-A3CE-257F9A863FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA293852-4C14-46ED-A3CE-257F9A863FC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {825B170C-0BAA-41F9-82A2-46479495B4DF}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Src\AA.Modules.EcEniBuilderAcontis.Src.projitems*{1ab23791-beab-4653-a0ca-a90be48b1f70}*SharedItemsImports = 5
+		Src\AA.Modules.EcEniBuilderAcontis.Src.projitems*{b4130833-3fe3-40d1-bf08-e0726ab82581}*SharedItemsImports = 5
+		Src\AA.Modules.EcEniBuilderAcontis.Src.projitems*{debe8568-00d1-4a1d-8ed3-7d8fc2ab04a1}*SharedItemsImports = 13
+		Src\AA.Modules.EcEniBuilderAcontis.Src.projitems*{ea293852-4c14-46ed-a3ce-257f9a863fc1}*SharedItemsImports = 5
+	EndGlobalSection
+EndGlobal
