@@ -32,22 +32,46 @@ public class EcEniBuilderAcontis
 
     public string CreateEni(List<SlaveDeviceInfo> slaves, string pathBuilderConfigXml)
     {
-        string xml = CreateEniBuilderXml(slaves);
+        if (string.IsNullOrWhiteSpace(pathBuilderConfigXml))
+            throw new Exception("Xml Path cannot be null");
 
+        string xml = CreateEniBuilderXml(slaves);
         string eni;
 
+        
+        File.WriteAllText(pathBuilderConfigXml, xml, Encoding.UTF8);
 
+        //Create Eni
         var psi = new ProcessStartInfo
         {
             FileName = _pathBuilderExe,
-            Arguments = pathBuilderConfigXml,
+            Arguments = $"\"{pathBuilderConfigXml}\"",
             UseShellExecute = false,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
             CreateNoWindow = true
         };
 
-        using (var p = Process.Start(psi))
-            p!.WaitForExit();
+        string output, error;
 
+        using (var process = Process.Start(psi))
+        {
+            output = process!.StandardOutput.ReadToEnd();
+            error = process.StandardError.ReadToEnd();
+            process.WaitForExit();
+        }
+
+        Console.WriteLine("Standard Output:");
+        Console.WriteLine(output);
+
+           if(!string.IsNullOrWhiteSpace(error))
+        {
+            Console.WriteLine("Standard Error:");
+            Console.WriteLine(error);
+            throw new Exception(error);
+        }
+
+        //Load File
         var pathEni = _pathBuilderExe?.Replace("EniBuilder.exe", "").Trim() + "EniBuilderConfig_eni.xml";
         eni = File.ReadAllText(pathEni);
 
@@ -64,7 +88,7 @@ public class EcEniBuilderAcontis
         _ => Port.None // includes 4 and beyond
     };
 
-    public static List<SlaveDeviceInfo>  ConvertBusSlafeInfoToSlavesList(List<EcBusSlaveInfo> busSlaveList, List<string> slaveNames)
+    public static List<SlaveDeviceInfo>  ConvertBusSlaveInfoToSlavesList(List<EcBusSlaveInfo> busSlaveList, List<string?> slaveNames)
     {
         var result = new List<SlaveDeviceInfo>();
 
@@ -85,14 +109,13 @@ public class EcEniBuilderAcontis
 
             var slaveDevice = new SlaveDeviceInfo
             {
-                
-                Name = name,
+                Name = name!,
+                PhysAddr = busInfo.StationAddress,
                 VendorId = busInfo.VendorId,
                 ProductCode = busInfo.ProductCode,
                 RevisionNo = busInfo.RevisionNumber,
                 PrevPort = MapPort(busInfo.PrevPort),
                 PrevPhysAddr = prevPhysAddr
-
             };
 
             result.Add(slaveDevice);
@@ -151,3 +174,5 @@ public class EcEniBuilderAcontis
     }
 
 }
+
+

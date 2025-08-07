@@ -19,17 +19,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="EcEniBuilderAcontis">
+      <HintPath>..\Assembly\bin\Debug\net8.0\EcEniBuilderAcontis.dll</HintPath>
+    </Reference>
     <Reference Include="EcMasterAcontis">
-      <HintPath>..\Externals\EcMasterAcontis.dll</HintPath>
+      <HintPath>..\Assembly\bin\Debug\net8.0\EcMasterAcontis.dll</HintPath>
     </Reference>
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
-
-  <Import Project="..\..\Src\AA.Modules.EcEniBuilderAcontis.Src.projitems" Label="Shared" />
-
-  <Import Project="..\Src\AA.Modules.EcEniBuilderAcontis.Src.projitems" Label="Shared" />
 
 </Project>

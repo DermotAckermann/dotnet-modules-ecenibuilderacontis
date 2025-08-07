@@ -40,6 +40,5 @@ Global
 		Src\AA.Modules.EcEniBuilderAcontis.Src.projitems*{1ab23791-beab-4653-a0ca-a90be48b1f70}*SharedItemsImports = 5
 		Src\AA.Modules.EcEniBuilderAcontis.Src.projitems*{b4130833-3fe3-40d1-bf08-e0726ab82581}*SharedItemsImports = 5
 		Src\AA.Modules.EcEniBuilderAcontis.Src.projitems*{debe8568-00d1-4a1d-8ed3-7d8fc2ab04a1}*SharedItemsImports = 13
-		Src\AA.Modules.EcEniBuilderAcontis.Src.projitems*{ea293852-4c14-46ed-a3ce-257f9a863fc1}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
