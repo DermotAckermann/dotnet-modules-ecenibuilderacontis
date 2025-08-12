@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AA.Modules.EcEniBuilderAcontisModule;
+﻿namespace AA.Modules.EcEniBuilderAcontisModule;
 
 public enum Port
 {

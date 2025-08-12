@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using AA.Modules.EcEniBuilderAcontisModule;
-using AA.Modules.EcMasterAcontis;
+﻿using AA.Modules.EcMasterAcontis;
 using System.Text.Json;
 
 namespace AA.Modules.EcEniBuilderAcontisModule.Tests;

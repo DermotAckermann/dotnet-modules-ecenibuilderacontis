@@ -68,7 +68,7 @@ public class EcEniBuilderAcontis
         }
 
         //Load File
-        var pathEni = _pathBuilderExe?.Replace("EniBuilder.exe", "").Trim() + "EniBuilderConfig_eni.xml";
+        var pathEni = Path.GetDirectoryName(pathBuilderConfigXml) + "\\EniBuilderConfig_eni.xml";
         eni = File.ReadAllText(pathEni);
 
         return eni;
