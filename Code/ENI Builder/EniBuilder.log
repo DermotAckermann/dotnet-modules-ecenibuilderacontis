@@ -81,3 +81,6 @@ DBG | 2025-08-07 15:45:18 | EcEniSlave.AppendSlave(MASTER -> 3)
 ERR | 2025-08-07 15:47:03 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0xf423f, RevisionNo: 0x120000). Please add ESI file!
 ERR | 2025-08-07 15:47:03 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0x44c2c52, RevisionNo: 0xbc614e). Please add ESI file!
 ERR | 2025-08-07 15:47:03 | EniEngine: ESI not found for Slave 1 (VendorId: 0x64, ProductCode: 0x44c2c52, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-12 10:37:28 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0xf423f, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-12 10:37:28 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0x44c2c52, RevisionNo: 0xbc614e). Please add ESI file!
+ERR | 2025-08-12 10:37:28 | EniEngine: ESI not found for Slave 1 (VendorId: 0x64, ProductCode: 0x44c2c52, RevisionNo: 0x120000). Please add ESI file!
