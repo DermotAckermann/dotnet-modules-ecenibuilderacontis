@@ -61,13 +61,13 @@ public class EcEniBuilderAcontis
             process.WaitForExit();
         }
 
-        Console.WriteLine("Standard Output:");
-        Console.WriteLine(output);
+        //Console.WriteLine("Standard Output:");
+        //Console.WriteLine(output);
 
            if(!string.IsNullOrWhiteSpace(error))
         {
-            Console.WriteLine("Standard Error:");
-            Console.WriteLine(error);
+            //Console.WriteLine("Standard Error:");
+            //Console.WriteLine(error);
             throw new Exception(error);
         }
 
