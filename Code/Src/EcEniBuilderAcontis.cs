@@ -1,9 +1,13 @@
 ﻿
+using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 using AA.Modules.EcMasterAcontis;
-
+using System.Collections.Generic;
+using System.IO;
+using System.Diagnostics;
+using System.Linq;
 
 namespace AA.Modules.EcEniBuilderAcontisModule;
 
@@ -26,12 +30,12 @@ public class EcEniBuilderAcontis
 
     //*** Methods public
 
-    public string CreateEni(List<SlaveDeviceInfo> slaves, string pathBuilderConfigXml)
+    public string CreateEni(List<SlaveDeviceInfo> slaves, string pathBuilderConfigXml, string eniFileName)
     {
         if (string.IsNullOrWhiteSpace(pathBuilderConfigXml))
             throw new Exception("Xml Path cannot be null");
 
-        string xml = CreateEniBuilderXml(slaves);
+        string xml = CreateEniBuilderXml(slaves, eniFileName);
         string eni;
 
         
@@ -68,7 +72,7 @@ public class EcEniBuilderAcontis
         }
 
         //Load File
-        var pathEni = Path.GetDirectoryName(pathBuilderConfigXml) + "\\EniBuilderConfig_eni.xml";
+        var pathEni = Path.GetDirectoryName(pathBuilderConfigXml) + "\\" + eniFileName;
         eni = File.ReadAllText(pathEni);
 
         return eni;
@@ -122,13 +126,13 @@ public class EcEniBuilderAcontis
 
     //*** Methods private
 
-    private static string CreateEniBuilderXml(List<SlaveDeviceInfo> slaves)
+    private static string CreateEniBuilderXml(List<SlaveDeviceInfo> slaves, string eniFileName)
     {
         const string eniTemplate =
     @"<?xml version=""1.0"" encoding=""utf-8""?>
     <Config>
         <Info>
-        <EniFileName>EniBuilderConfig_eni.xml</EniFileName>
+        <EniFileName>{1}</EniFileName>
         <FileFormatVersion>1.1</FileFormatVersion>
         </Info>
         <Master Name=""Class-A Master"">
@@ -166,7 +170,9 @@ public class EcEniBuilderAcontis
             sb.AppendLine("    </Slave>");
         }
 
-        return string.Format(CultureInfo.InvariantCulture, eniTemplate, sb.ToString());
+        string escapedFileName = System.Security.SecurityElement.Escape(eniFileName);
+
+        return string.Format(CultureInfo.InvariantCulture, eniTemplate, sb.ToString(), escapedFileName);
     }
 
 }
