@@ -28,7 +28,7 @@ public static class EcEniBuilderAcontisTests
 
         string xmlPath = "D:\\Work Jean\\DotNet Modules\\EC ENI Builder Acontis Git\\Code\\ENI Builder\\config.xml";
 
-        var eni = builder.CreateEni(slaveDeviceInfoList, xmlPath);
+        var eni = builder.CreateEni(slaveDeviceInfoList, xmlPath, "EniBuilderConfig_eni");
 
     }
 

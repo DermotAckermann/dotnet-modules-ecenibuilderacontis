@@ -115,7 +115,17 @@ public class EcEniBuilderAcontis
                 ProductCode = busInfo.ProductCode,
                 RevisionNo = busInfo.RevisionNumber,
                 PrevPort = MapPort(busInfo.PrevPort),
-                PrevPhysAddr = prevPhysAddr
+                PrevPhysAddr = prevPhysAddr,
+                /*ExcludePdoRemove = new ushort[]
+                {
+                    0x1A02,
+                    0x1A04
+                },
+                ExcludePdoAdd = new ushort[]
+                {
+                    0x1A00,
+                    0x1A01
+                }*/
             };
 
             result.Add(slaveDevice);
