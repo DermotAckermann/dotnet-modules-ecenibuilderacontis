@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)EcEniBuilderAcontis.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Port.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\PdoConfig.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SlaveDeviceInfo.cs" />
   </ItemGroup>
 </Project>

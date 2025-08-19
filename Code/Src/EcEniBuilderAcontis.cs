@@ -88,7 +88,7 @@ public class EcEniBuilderAcontis
         _ => Port.None // includes 4 and beyond
     };
 
-    public static List<SlaveDeviceInfo>  ConvertBusSlaveInfoToSlavesList(List<EcBusSlaveInfo> busSlaveList, List<string?> slaveNames)
+    public static List<SlaveDeviceInfo>  ConvertBusSlaveInfoToSlavesList(List<EcBusSlaveInfo> busSlaveList, List<string?> slaveNames, PdoConfig[] pdoConfiguration)
     {
         var result = new List<SlaveDeviceInfo>();
 
