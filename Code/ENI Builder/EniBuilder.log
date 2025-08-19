@@ -84,3 +84,28 @@ ERR | 2025-08-07 15:47:03 | EniEngine: ESI not found for Slave 1 (VendorId: 0x64
 ERR | 2025-08-12 10:37:28 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0xf423f, RevisionNo: 0x120000). Please add ESI file!
 ERR | 2025-08-12 10:37:28 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0x44c2c52, RevisionNo: 0xbc614e). Please add ESI file!
 ERR | 2025-08-12 10:37:28 | EniEngine: ESI not found for Slave 1 (VendorId: 0x64, ProductCode: 0x44c2c52, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-19 14:51:04 | Configuration couldn't be loaded:
+'#' es un token inesperado. Se esperaba '"' o '''. línea 42, posición 26. (Line: 42, Position: 26)
+ERR | 2025-08-19 14:52:26 | Configuration couldn't be loaded:
+'#' es un token inesperado. Se esperaba '"' o '''. línea 42, posición 26. (Line: 42, Position: 26)
+ERR | 2025-08-19 14:53:40 | Configuration couldn't be loaded:
+'#' es un token inesperado. Se esperaba '"' o '''. línea 42, posición 26. (Line: 42, Position: 26)
+ERR | 2025-08-19 14:55:35 | Configuration couldn't be loaded:
+'#' es un token inesperado. Se esperaba '"' o '''. línea 46, posición 26. (Line: 46, Position: 26)
+ERR | 2025-08-19 14:56:21 | Configuration couldn't be loaded:
+'#' es un token inesperado. Se esperaba '"' o '''. línea 46, posición 26. (Line: 46, Position: 26)
+ERR | 2025-08-19 15:16:13 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0xf423f, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-19 15:16:13 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0x44c2c52, RevisionNo: 0xbc614e). Please add ESI file!
+ERR | 2025-08-19 15:16:14 | EniEngine: ESI not found for Slave 1 (VendorId: 0x64, ProductCode: 0x44c2c52, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-19 15:18:27 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0xf423f, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-19 15:18:28 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0x44c2c52, RevisionNo: 0xbc614e). Please add ESI file!
+ERR | 2025-08-19 15:18:28 | EniEngine: ESI not found for Slave 1 (VendorId: 0x64, ProductCode: 0x44c2c52, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-19 15:18:40 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0xf423f, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-19 15:19:09 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0x44c2c52, RevisionNo: 0xbc614e). Please add ESI file!
+ERR | 2025-08-19 15:19:15 | EniEngine: ESI not found for Slave 1 (VendorId: 0x64, ProductCode: 0x44c2c52, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-19 15:19:41 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0xf423f, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-19 15:19:41 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0x44c2c52, RevisionNo: 0xbc614e). Please add ESI file!
+ERR | 2025-08-19 15:19:42 | EniEngine: ESI not found for Slave 1 (VendorId: 0x64, ProductCode: 0x44c2c52, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-19 15:20:40 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0xf423f, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-19 15:20:40 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0x44c2c52, RevisionNo: 0xbc614e). Please add ESI file!
+ERR | 2025-08-19 15:20:41 | EniEngine: ESI not found for Slave 1 (VendorId: 0x64, ProductCode: 0x44c2c52, RevisionNo: 0x120000). Please add ESI file!

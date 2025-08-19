@@ -88,12 +88,14 @@ public class EcEniBuilderAcontis
         _ => Port.None // includes 4 and beyond
     };
 
-    public static List<SlaveDeviceInfo>  ConvertBusSlaveInfoToSlavesList(List<EcBusSlaveInfo> busSlaveList, List<string?> slaveNames, PdoConfig[] pdoConfiguration)
+    public static List<SlaveDeviceInfo> ConvertBusSlaveInfoToSlavesList(List<EcBusSlaveInfo> busSlaveList, List<string?> slaveNames, List<PdoConfig> pdoConfiguration = null)
     {
+        pdoConfiguration ??= Enumerable.Range(0,busSlaveList.Count).Select(_ => new PdoConfig()).ToList();
         var result = new List<SlaveDeviceInfo>();
 
         for (int i = 0; i < busSlaveList.Count; i++)
         {
+            pdoConfiguration[i] ??= new PdoConfig();
             var busInfo = busSlaveList[i];
             var name = slaveNames[i];
 
@@ -116,16 +118,7 @@ public class EcEniBuilderAcontis
                 RevisionNo = busInfo.RevisionNumber,
                 PrevPort = MapPort(busInfo.PrevPort),
                 PrevPhysAddr = prevPhysAddr,
-                /*ExcludePdoRemove = new ushort[]
-                {
-                    0x1A02,
-                    0x1A04
-                },
-                ExcludePdoAdd = new ushort[]
-                {
-                    0x1A00,
-                    0x1A01
-                }*/
+                PdoConfiguration = pdoConfiguration[i]
             };
 
             result.Add(slaveDevice);
@@ -142,16 +135,15 @@ public class EcEniBuilderAcontis
     @"<?xml version=""1.0"" encoding=""utf-8""?>
     <Config>
         <Info>
-        <EniFileName>{1}</EniFileName>
-        <FileFormatVersion>1.1</FileFormatVersion>
+           <EniFileName>{1}</EniFileName>
+           <FileFormatVersion>1.1</FileFormatVersion>
         </Info>
         <Master Name=""Class-A Master"">
-        <CycleTime>1000</CycleTime>
-        <Dc Mode=""BusShift"" SyncWindowMonitoring=""0"" SystemTime64Bit=""0"" />
+           <CycleTime>1000</CycleTime>
+           <Dc Mode=""BusShift"" SyncWindowMonitoring=""0"" SystemTime64Bit=""0"" />
         </Master>
         <Slaves>
-    {0}
-        </Slaves>
+       {0}</Slaves>
     </Config>";
 
         var sb = new StringBuilder();
@@ -175,6 +167,26 @@ public class EcEniBuilderAcontis
                 sb.AppendLine($"        <PhysAddr>{slave.PrevPhysAddr.Value}</PhysAddr>");
                 sb.AppendLine($"        <Port>{portLetter}</Port>");
                 sb.AppendLine("      </PreviousPort>");
+            }
+
+            //Optional ExcludePdo
+            if(slave.PdoConfiguration.PdosAdd != null && slave.PdoConfiguration.PdosRemove != null)
+            {
+                sb.AppendLine("      <ExcludePdo>");
+                sb.AppendLine("         <Add>");
+                foreach(var pdo in slave.PdoConfiguration.PdosAdd)
+                {
+                    sb.AppendLine($"            <Entry Index=\"#x{pdo:X}\" />");
+                }
+                sb.AppendLine("         </Add>");
+                sb.AppendLine("         <Remove>");
+                foreach (var pdo in slave.PdoConfiguration.PdosRemove)
+                {
+                    sb.AppendLine($"            <Entry Index=\"#x{pdo:X}\" />");
+                }
+                sb.AppendLine("         </Remove>");
+                sb.AppendLine("      </ExcludePdo>");
+
             }
 
             sb.AppendLine("    </Slave>");

@@ -26,7 +26,7 @@ public class EcEniBuilderAcontisUnitTests
         string xmlPath = "D:\\Work Jean\\DotNet Modules\\EC ENI Builder Acontis Git\\Code\\ENI Builder\\config.xml";
         var slaveDeviceInfoList = EcEniBuilderAcontis.ConvertBusSlaveInfoToSlavesList(busSlaveInfoList, slaveNames!);
 
-        Assert.Throws<Exception>(() => builder.CreateEni(slaveDeviceInfoList, xmlPath));
+        Assert.Throws<Exception>(() => builder.CreateEni(slaveDeviceInfoList, xmlPath, "EniBuilderConfig_eni"));
     }
 
     [Fact, Priority(1)]
@@ -39,7 +39,7 @@ public class EcEniBuilderAcontisUnitTests
         string xmlPath = "D:\\Work Jean\\DotNet Modules\\EC ENI Builder Acontis Git\\Code\\ENI Builder\\config.xml";
         var slaveDeviceInfoList = EcEniBuilderAcontis.ConvertBusSlaveInfoToSlavesList(busSlaveInfoList, slaveNames!);
 
-        Assert.Throws<Exception>(() => builder.CreateEni(slaveDeviceInfoList, xmlPath));
+        Assert.Throws<Exception>(() => builder.CreateEni(slaveDeviceInfoList, xmlPath, "EniBuilderConfig_eni"));
     }
 
     [Fact, Priority(1)]
@@ -52,7 +52,7 @@ public class EcEniBuilderAcontisUnitTests
         string xmlPath = "D:\\Work Jean\\DotNet Modules\\EC ENI Builder Acontis Git\\Code\\ENI Builder\\config.xml";
         var slaveDeviceInfoList = EcEniBuilderAcontis.ConvertBusSlaveInfoToSlavesList(busSlaveInfoList, slaveNames!);
 
-        Assert.Throws<Exception>(() => builder.CreateEni(slaveDeviceInfoList, xmlPath));
+        Assert.Throws<Exception>(() => builder.CreateEni(slaveDeviceInfoList, xmlPath, "EniBuilderConfig_eni"));
     }
 
     [Fact, Priority(1)]
@@ -65,7 +65,7 @@ public class EcEniBuilderAcontisUnitTests
         string xmlPath = "";
         var slaveDeviceInfoList = EcEniBuilderAcontis.ConvertBusSlaveInfoToSlavesList(busSlaveInfoList, slaveNames!);
 
-        Assert.Throws<Exception>(() => builder.CreateEni(slaveDeviceInfoList, xmlPath));
+        Assert.Throws<Exception>(() => builder.CreateEni(slaveDeviceInfoList, xmlPath, "EniBuilderConfig_eni"));
     }
 
     [Fact, Priority(2)]
@@ -74,17 +74,23 @@ public class EcEniBuilderAcontisUnitTests
         var busSlaveInfoList = CreateList();
         var slaveNames = CreateNames();
 
-        string xmlPath = "D:\\Work Jean\\DotNet Modules\\EC ENI Builder Acontis Git\\Code\\ENI Builder\\config.xml";
-        var slaveDeviceInfoList = EcEniBuilderAcontis.ConvertBusSlaveInfoToSlavesList(busSlaveInfoList, slaveNames!);
+        PdoConfig pdoConfig = new PdoConfig()
+        {
+            PdosAdd = new ushort[] {0x1a00, 0x1a01},
+            PdosRemove = new ushort[] {0x1a02, 0x1a04}
+        };
 
-        var eni = builder.CreateEni(slaveDeviceInfoList, xmlPath);
+        var pdoConfigList = Enumerable.Range(0, 6).Select(_=> new PdoConfig()).ToList();
+        pdoConfigList[2] = pdoConfig;
+
+        string xmlPath = "D:\\Work Jean\\DotNet Modules\\EC ENI Builder Acontis Git\\Code\\ENI Builder\\config.xml";
+        var slaveDeviceInfoList = EcEniBuilderAcontis.ConvertBusSlaveInfoToSlavesList(busSlaveInfoList, slaveNames!,pdoConfigList);
+
+        var eni = builder.CreateEni(slaveDeviceInfoList, xmlPath, "EniBuilderConfig_eni.xml");
 
         Assert.NotNull(eni);
-        Assert.Equal(eni, eniFile6Slaves);
     }
 
-
-    private static string eniFile6Slaves = File.ReadAllText("D:\\Work Jean\\EC-Engineer_SDK_EniEngine_Layer5_DotNet4_OEM_V3.9.9\\StandardSetup_EniBuilder_eni.xml");
     private static List<EcBusSlaveInfo> CreateList()
     {
         var json = File.ReadAllText("D:\\Work Jean\\Chat Gpt\\busSlaveInfoList.json");

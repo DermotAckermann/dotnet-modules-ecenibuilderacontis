@@ -18,7 +18,8 @@ public class SlaveDeviceInfo
     public ushort? PrevPhysAddr { get; set; }
     public Port PrevPort { get; set; } = Port.None;
 
-    public PdoConfig[] PdoConfiguration { get; set; }
+
+    public PdoConfig PdoConfiguration { get; set; }
 
 
 }
