@@ -109,3 +109,6 @@ ERR | 2025-08-19 15:19:42 | EniEngine: ESI not found for Slave 1 (VendorId: 0x64
 ERR | 2025-08-19 15:20:40 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0xf423f, RevisionNo: 0x120000). Please add ESI file!
 ERR | 2025-08-19 15:20:40 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0x44c2c52, RevisionNo: 0xbc614e). Please add ESI file!
 ERR | 2025-08-19 15:20:41 | EniEngine: ESI not found for Slave 1 (VendorId: 0x64, ProductCode: 0x44c2c52, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-22 12:14:59 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0xf423f, RevisionNo: 0x120000). Please add ESI file!
+ERR | 2025-08-22 12:15:04 | EniEngine: ESI not found for Slave 1 (VendorId: 0x2, ProductCode: 0x44c2c52, RevisionNo: 0xbc614e). Please add ESI file!
+ERR | 2025-08-22 12:15:05 | EniEngine: ESI not found for Slave 1 (VendorId: 0x64, ProductCode: 0x44c2c52, RevisionNo: 0x120000). Please add ESI file!

@@ -174,13 +174,13 @@ public class EcEniBuilderAcontis
             {
                 sb.AppendLine("      <ExcludePdo>");
                 sb.AppendLine("         <Add>");
-                foreach(var pdo in slave.PdoConfiguration.PdosAdd)
+                foreach(var pdo in slave.PdoConfiguration.PdosRemove)
                 {
                     sb.AppendLine($"            <Entry Index=\"#x{pdo:X}\" />");
                 }
                 sb.AppendLine("         </Add>");
                 sb.AppendLine("         <Remove>");
-                foreach (var pdo in slave.PdoConfiguration.PdosRemove)
+                foreach (var pdo in slave.PdoConfiguration.PdosAdd)
                 {
                     sb.AppendLine($"            <Entry Index=\"#x{pdo:X}\" />");
                 }
